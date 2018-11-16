@@ -13,6 +13,7 @@ while True:
     lives = 3
     values = 10
     level = 1
+    hints = True
     # Number to expand range by each level
     difficulty = 5
 
@@ -26,6 +27,12 @@ while True:
             guess = int(input(f"I'm thinking of a number between 1 and {values}, what is it? "))
             if guess not in range(1, values+1):
                 raise ValueError
+            elif hints: # My code here!
+                if guess > secret:
+                    print("Your guess was too high. Suck it.")
+                elif guess < secret:
+                    print("Your guess was too low. Nerd.")
+
         except ValueError:
             guess = None
             print("Please guess a number in the appropriate range.")
@@ -44,4 +51,4 @@ while True:
     print("GAME OVER\n")
     again = input("Play again? [Y]/n:").lower()
     if again == "n":
-        break
+        break        
